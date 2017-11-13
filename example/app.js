@@ -21,7 +21,7 @@ import TabStatic from './mod/TabStatic'
 import PullToRefresh from './mod/PullToRefresh'
 import Modals from './mod/Modals'
 import Preloader from './mod/Preloader'
-import Keyboard from './mod/Keyboard'
+// import Keyboard from './mod/Keyboard'
 import SortableList from './mod/SortableList'
 import Colors from './mod/Colors'
 
@@ -47,7 +47,7 @@ render((
       <Pages path="/PullToRefresh" component={PullToRefresh}/>
       <Pages path="/Modals" component={Modals}/>
       <Pages path="/Preloader" component={Preloader}/>
-      <Pages path="/Keyboard" component={Keyboard}/>
+      {/* <Pages path="/Keyboard" component={Keyboard}/> */}
       <Pages path="/Colors" component={Colors}/>
     </View>
   </App>

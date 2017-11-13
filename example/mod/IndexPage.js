@@ -25,8 +25,8 @@ export default class IndexPage extends Component {
           <ContentBlockTitle style={{fontSize: '20px'}}>wonderjs</ContentBlockTitle>
           <ContentBlock>
             快钱包移动组件库 <br/>
-          地址: <a href="https://jian263994241.gitbooks.io/wonderjs/content/">wonderjs</a> <br/>
-        版本: 0.4.0
+            地址: <a href="https://jian263994241.gitbooks.io/wonderjs/content/">wonderjs</a> <br/>
+            版本: 0.4.0
           </ContentBlock>
           <List>
 
@@ -49,7 +49,7 @@ export default class IndexPage extends Component {
               <ListItem title="图标" link to="/Icons" component={Link}/>
               <ListItem title="懒加载" link to="/LazyLoad" component={Link}/>
               <ListItem title="标签切换" link to="/Tab/Index" component={Link}/>
-              <ListItem title="键盘" link to="/Keyboard" component={Link}/>
+              {/* <ListItem title="键盘" link to="/Keyboard" component={Link}/> */}
             </ListGroup>
 
             <ListGroup title="操作">

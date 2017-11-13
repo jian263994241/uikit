@@ -8,7 +8,7 @@ export * as Bars, {Navbar, SubNavBar, Toolbar} from './mod/componnets/Bars'
 export {ContentBlock, ContentBlockTitle} from './mod/componnets/ContentBlock'
 
 export Preloader from './mod/componnets/Preloader'
-export Keyboard from './mod/componnets/Keyboard'
+// export Keyboard from './mod/componnets/Keyboard'
 export * as ListView from './mod/componnets/ListView'
 export SwipeableViews from './mod/componnets/SwipeableViews'
 export Form from './mod/componnets/Form'

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import $ from 'dom7';
 import {initPullToRefresh} from '../utils/pull-to-refresh'
-import debounce from 'lodash.debounce';
+
 
 export default class PageContent extends Component {
 
@@ -148,7 +148,7 @@ export default class PageContent extends Component {
             </div>
           )
         }
-        
+
 {children}
         {
           showInfiniteScrollPreloader && (

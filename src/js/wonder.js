@@ -24,9 +24,9 @@ export Picker from './mod/componnets/Picker';
 
 //lib
 export dom from 'dom7'
-export LazyLoad from 'react-lazy-load'
+// export LazyLoad from 'react-lazy-load'
 export * as RouterDOM, {Link, Redirect, withRouter} from 'react-router-dom'
 export classnames from 'classnames'
 export asyncValidator from 'async-validator'
 export mobx from 'mobx'
-export mobxReact from 'mobx-react'
+export * as mobxReact from 'mobx-react'

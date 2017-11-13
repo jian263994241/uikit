@@ -14,7 +14,7 @@ import CheckboxesRadios from './mod/CheckboxesRadios'
 import Buttons from './mod/Buttons'
 import Grid from './mod/Grid'
 import Icons from './mod/Icons'
-import LazyLoad from './mod/LazyLoad'
+// import LazyLoad from './mod/LazyLoad'
 import Tab from './mod/Tab'
 import TabAnimation from './mod/TabAnimation'
 import TabStatic from './mod/TabStatic'
@@ -40,7 +40,7 @@ render((
       <Pages path="/Buttons" component={Buttons}/>
       <Pages path="/Grid" component={Grid}/>
       <Pages path="/Icons" component={Icons}/>
-      <Pages path="/LazyLoad" component={LazyLoad}/>
+      {/* <Pages path="/LazyLoad" component={LazyLoad}/> */}
       <Pages path="/Tab/Index" component={Tab}/>
       <Pages path="/Tab/Animation" component={TabAnimation}/>
       <Pages path="/Tab/Static" component={TabStatic}/>

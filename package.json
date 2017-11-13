@@ -9,7 +9,8 @@
   "homepage": "https://www.99bill.com",
   "scripts": {
     "start": "c release -L",
-    "build": "c release dist",
+    "build": "c release build -c",
+    "dist": "c release dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -19,19 +20,16 @@
   "author": "jianl",
   "license": "ISC",
   "dependencies": {
-    "antd": "^2.10.2",
     "async-validator": "^1.7.1",
     "classnames": "^2.2.5",
     "dom7": "^1.7.2",
     "f7-modal": "^0.2.5",
-    "lodash.debounce": "^4.0.8",
     "mobx": "^3.2.1",
     "mobx-react": "^4.2.2",
     "prop-types": "^15.5.7",
     "rc-mounter": "^1.1.5",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-lazy-load": "^3.0.12",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-motion": "^0.5.0",
     "react-router-dom": "^4.1.1",
     "react-swipeable-views": "^0.12.0",

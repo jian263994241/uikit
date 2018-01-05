@@ -23,7 +23,6 @@ export default class Page extends Component {
 
   componentDidMount() {
     this.setDocumentTitle();
-    console.log(this.props);
   }
 
 

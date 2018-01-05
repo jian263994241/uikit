@@ -8,6 +8,22 @@
     height: 100%;
     overflow: hidden;
     background: transparent;
+    &.slide-left .page-transition{
+      &:first-child{
+        z-index: 1;
+      }
+      &:last-child{
+        z-index: 2;
+      }
+    }
+    &.slide-right .page-transition{
+      &:first-child{
+        z-index: 2;
+      }
+      &:last-child{
+        z-index: 1;
+      }
+    }
 }
 
 .page {
@@ -28,17 +44,11 @@
 .page-transition {
     .page;
     background: transparent;
-    
+
     &::before {
         .page-fake-shadow();
     }
 
-    &.slide-left{
-      z-index: 200;
-    }
-    &.slide-right {
-      z-index: 100;
-    }
 }
 
 .page-on-left {

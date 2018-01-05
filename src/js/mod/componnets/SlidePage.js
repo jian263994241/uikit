@@ -2,12 +2,63 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import RouteTransition from './router-transition/RouteTransition';
+import AnimatedSwitch from './transition/AnimatedSwitch';
 import spring from 'react-motion/lib/spring';
+import withRouter from 'react-router-dom/withRouter';
 
-import kq from '../utils/kq';
 
-export default class SlidePage extends Component {
+const fullfade = { stiffness: 330, damping: 33, precision: 1 };
+const halffade = { stiffness: 110, damping: 17, precision: 1 };
+
+const pageAnimation = {
+  'slide-left': {
+    atEnter: {
+      offset: 100,
+      opacity: 100
+    },
+    atLeave: {
+      offset: spring(-22, halffade),
+      opacity: spring(90, halffade)
+    },
+    atActive: {
+      offset: spring(0, fullfade),
+      opacity: spring(100, fullfade)
+    },
+    mapStyles(styles) {
+      return {
+        transform: `translateX(${styles.offset}%)`,
+        opacity: styles.opacity/100
+      };
+    },
+  },
+  'slide-right': {
+    atEnter: {
+      offset: -22,
+      opacity: 90
+    },
+    atLeave: {
+      offset: spring(102, fullfade),
+      opacity: spring(90, fullfade)
+    },
+    atActive: {
+      offset: spring(0, halffade),
+      opacity: spring(100, halffade)
+    },
+    mapStyles(styles) {
+      return {
+        transform: `translateX(${styles.offset}%)`,
+        opacity: styles.opacity/100
+      };
+    }
+  },
+  'empty': {
+    atEnter: {},
+    atLeave:{},
+    atActive:{}
+  }
+}
+
+class SlidePage extends Component {
 
   static uiName = 'SlidePage';
 
@@ -30,98 +81,35 @@ export default class SlidePage extends Component {
 
     const state = location.state || {};
 
-    const pageAnimation = {
-      'slide-left': {
-        atEnter: {
-          offset: 100
-        },
-        atLeave: {
-          offset: spring(-33, { stiffness: 330, damping: 33 })
-        },
-        atActive: {
-          offset: spring(0, { stiffness: 330, damping: 33 })
-        },
-        mapStyles(styles) {
-          return {
-            transform: `translateX(${styles.offset}%)`
-          };
-        },
-      },
-      'slide-right': {
-        atEnter: {
-          offset: -33
-        },
-        atLeave: {
-          offset: spring(102, { stiffness: 330, damping: 33 })
-        },
-        atActive: {
-          offset: spring(0, { stiffness: 330, damping: 33 })
-        },
-        mapStyles(styles) {
-          return {
-            transform: `translateX(${styles.offset}%)`
-          };
-        }
-      },
-      'no': {
-        atEnter: {},
-        atLeave:{},
-        atActive:{}
+    const animationType = (()=>{
+      if(noAnimation || state.animation === null){
+        return 'empty';
       }
-    }
-
-    let animationType = 'no';
-
-
-    animationType = (()=>{
-      if(action === 'REPLACE'){
-        return 'no';
-      }
-      if(action === 'POP'){
+      if(action === 'POP' || state.animation === 'back'){
         return 'slide-right';
       }
-      if(action === 'PUSH'){
+      if(action === 'PUSH'|| action === 'REPLACE' || state.animation === 'push'){
         return 'slide-left';
       }
+      return 'empty';
     })();
 
-    if(state.animation === 'push'){
-      animationType = 'slide-left';
-    }
-
-    if(state.animation === 'back'){
-      animationType = 'slide-right';
-    }
-
-    if(state.animation === 'no'){
-      animationType = 'slide-right';
-    }
-
-    if(noAnimation || (kq.Env.is('safari') && !kq.Env.is('chrome'))){
-      animationType = 'no';
-    }
-
-    const cls = classnames('pages', className);
+    const cls = classnames('pages', className ,{
+      'slide-left' : (animationType === 'slide-left'),
+      'slide-right' : (animationType === 'slide-right')
+    });
 
     return (
-        <RouteTransition
-          pathname={location.pathname}
-          component={false}
+        <AnimatedSwitch
           runOnMount={false}
           className={cls}
+          containerCss="page-transition"
           {...pageAnimation[animationType]}
         >
-        <div
-          className={
-            classnames({
-              'page-transition': true,
-              'slide-left' : (animationType === 'slide-left'),
-              'slide-right' : (animationType === 'slide-right')
-            })
-          }>
-            {React.cloneElement(children, {key, location})}
-        </div>
-      </RouteTransition>
+          {children}
+        </AnimatedSwitch>
     );
   }
 }
+
+export default withRouter(SlidePage);

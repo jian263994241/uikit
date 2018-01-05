@@ -1,5 +1,4 @@
-import React, {Component, Children} from 'react';
-import {cloneElement} from 'react-dom';
+import React, {Component, Children, cloneElement} from 'react';
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import {HashRouter, MemoryRouter, BrowserRouter, Route, Switch} from 'react-router-dom'
@@ -17,7 +16,7 @@ export default class View extends Component {
   static propTypes = {
     type: PropTypes.string,
     noAnimation: PropTypes.bool,
-    navbar: React.PropTypes.oneOfType([
+    navbar: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.object
     ])
@@ -54,21 +53,13 @@ export default class View extends Component {
       throughBar = <Navbar className="theme-gray" {...navbar}/>
     }
 
-    const renderPage = (props)=>(
-      <SlidePage history={props.history} noAnimation={noAnimation} className={classnames({'navbar-through': navbar})}>
-        <Switch> {children} </Switch>
-      </SlidePage>
-    );
-
-
-
-    const cls = classnames('view', className);
-
     return (
-      <div className={cls}>
+      <div className={classnames('view', className)}>
         {throughBar}
         <Router hashType="hashbang" {...rest}>
-          <Route render={renderPage}/>
+          <SlidePage noAnimation={noAnimation} className={classnames({'navbar-through': navbar})}>
+            {children}
+          </SlidePage>
         </Router>
       </div>
     );

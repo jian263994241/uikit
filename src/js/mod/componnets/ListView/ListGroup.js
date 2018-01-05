@@ -14,7 +14,7 @@ export default class ListGroup extends Component {
   static uiName = 'ListGroup'
 
   static propTypes = {
-    title: React.PropTypes.string
+    title: PropTypes.string
   }
 
   static childContextTypes = {

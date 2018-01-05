@@ -8,7 +8,7 @@ export default class ListButton extends Component {
   static uiName = 'ListButton'
 
   static propTypes = {
-    className: React.PropTypes.string
+    className: PropTypes.string
   }
 
   static defaultProps = {

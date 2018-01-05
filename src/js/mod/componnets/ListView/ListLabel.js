@@ -7,7 +7,7 @@ export default class ListLabel extends Component {
   static uiName = 'ListBlockLabel'
 
   static propTypes = {
-    className: React.PropTypes.string
+    className: PropTypes.string
   }
 
   render() {

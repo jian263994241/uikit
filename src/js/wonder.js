@@ -15,7 +15,6 @@ export Form from './mod/componnets/Form'
 export * as Buttons, {Button, ButtonsSegmented} from './mod/componnets/Buttons'
 export * as Grid from './mod/componnets/Grid'
 export Icon from './mod/componnets/Icon'
-
 export device from './mod/utils/device'
 
 export {Modal, Popup, Popover, PickerModal, ActionsModal} from 'f7-modal'
@@ -28,5 +27,3 @@ export dom from 'dom7'
 export * as RouterDOM, {Link, Redirect, withRouter} from 'react-router-dom'
 export classnames from 'classnames'
 export asyncValidator from 'async-validator'
-export mobx from 'mobx'
-export * as mobxReact from 'mobx-react'

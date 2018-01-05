@@ -3,21 +3,6 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import device from '../utils/device'
 import $ from 'dom7'
-import {withRouter} from 'react-router-dom'
-
-class Expose extends Component {
-  componentWillMount() {
-    $(document).trigger('page:init', this.props);
-  }
-  componentWillUnmount() {
-    $(document).trigger('page:remove', this.props);
-  }
-  render() {
-    return null;
-  }
-}
-
-const ExposeRouter = withRouter(Expose);
 
 export default class Page extends Component {
 
@@ -36,30 +21,15 @@ export default class Page extends Component {
     navbarFixed: false,
   }
 
-  constructor(props){
-    super(props);
-    this.title = props.title;
-  }
-
   componentDidMount() {
-    this.setDocumentTitle(this.title);
+    this.setDocumentTitle();
+    console.log(this.props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const {
-      title
-    } = nextProps;
 
-    if(title != this.title){
-      this.setDocumentTitle(title);
-    }
-  }
-
-  setDocumentTitle = (title) => {
-
-    if(!title) return ;
-    this.title = title;
-    document.title = title;
+  setDocumentTitle = () => {
+    if(!this.props.title) return ;
+    document.title = this.props.title;
 
     if (device.ios && device.webView) {
       var i = document.createElement('iframe');
@@ -114,7 +84,6 @@ export default class Page extends Component {
         className={cls}
         ref="Page"
         {...other}>
-        <ExposeRouter title={title}/>
         {children}
       </div>
     );

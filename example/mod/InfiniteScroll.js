@@ -1,9 +1,6 @@
 import React, {Component} from 'react'
 
-import {Page, PageContent, ContentBlock, ContentBlockTitle, Bars, Grid, Icon} from 'kui'
-
-
-const {SubNavBar, Navbar} = Bars;
+import {Page, PageContent, ContentBlock, ContentBlockTitle, SubNavBar, Navbar, Grid, Icon} from 'kui'
 
 
 export default class PullToRefresh extends Component {

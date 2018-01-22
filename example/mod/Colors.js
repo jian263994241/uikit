@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 
-import {Page, PageContent, Buttons, ContentBlock, ContentBlockTitle, Bars, Grid} from 'kui'
+import {Page, PageContent, Buttons, ContentBlock, ContentBlockTitle, SubNavBar, Navbar, Grid} from 'kui'
 
 const {Button} = Buttons;
 const {Row,Col} = Grid;
-const {SubNavBar, Navbar} = Bars;
 
 export default class ColorsPage extends Component {
   componentDidMount() {

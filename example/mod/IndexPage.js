@@ -20,13 +20,13 @@ export default class IndexPage extends Component {
     };
 
     return (
-      <Page title="组件库">
+      <Page title="组件库" showToolbar>
         <PageContent>
           <ContentBlockTitle style={{fontSize: '20px'}}>wonderjs</ContentBlockTitle>
           <ContentBlock>
             快钱包移动组件库 <br/>
             地址: <a href="https://jian263994241.gitbooks.io/wonderjs/content/">wonderjs</a> <br/>
-            版本: 0.4.1
+            版本: 0.4.2
           </ContentBlock>
           <List>
 

@@ -1,13 +1,11 @@
 
 import React, {Component} from 'react'
 
-import {Page, PageContent, SwipeableViews, Bars} from 'kui'
+import {Page, PageContent, SwipeableViews, SubNavBar, Navbar} from 'kui'
 
 const {virtualize, autoPlay, Pagination} = SwipeableViews;
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
-const {SubNavBar, Navbar} = Bars;
 
 const styles = {
   root: {

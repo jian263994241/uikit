@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
 
-import {Page, PageContent, ListView, ContentBlock, ContentBlockTitle, Bars} from 'kui'
+import {Page, PageContent, ListView, ContentBlock, ContentBlockTitle, SubNavBar, Navbar} from 'kui'
 
 const {List, ListItem, ListGroup, ListLabel} = ListView;
-
-const {SubNavBar, Navbar} = Bars;
 
 const Icon = ()=>{
   return (

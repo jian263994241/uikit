@@ -176,31 +176,3 @@ export class SubNavBar extends Component {
     );
   }
 }
-
-export class Toolbar extends Component {
-
-  static uiName = 'Toolbar';
-
-  static propTypes = {
-    className: PropTypes.string
-  }
-
-  render() {
-    const {
-      className,
-      children,
-      ...other
-    } = this.props;
-
-    const cls = classnames('toolbar', className);
-
-    return (
-      <div className={cls} {...other} ref="Toolbar">
-        <div className="toolbar-inner">
-          {children}
-        </div>
-      </div>
-    );
-  }
-
-}

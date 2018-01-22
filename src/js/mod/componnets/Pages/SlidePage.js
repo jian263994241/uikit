@@ -6,7 +6,6 @@ import AnimatedSwitch from './transition/AnimatedSwitch';
 import spring from 'react-motion/lib/spring';
 import withRouter from 'react-router-dom/withRouter';
 
-
 const fullfade = { stiffness: 330, damping: 33, precision: 1 };
 const halffade = { stiffness: 110, damping: 17, precision: 1 };
 const crude = {stiffness: 110, damping:17, precision: 100};

@@ -19,29 +19,37 @@ export default class Page extends Component {
   static defaultProps = {
     waiting: false,
     navbarFixed: false,
+    showToolbar: false,
+  }
+
+  static contextTypes = {
+    showToolbar: PropTypes.bool,
+    toggleToobar: PropTypes.func
   }
 
   componentDidMount() {
-    this.setDocumentTitle();
-  }
-
-
-  setDocumentTitle = () => {
-    if(!this.props.title) return ;
-    document.title = this.props.title;
-
-    if (device.ios && device.webView) {
-      var i = document.createElement('iframe');
-      i.src = '/favicon.ico';
-      i.style.display = 'none';
-      i.onload = function() {
-          setTimeout(function(){
-              i.remove();
-          }, 9)
-      }
-      document.body.appendChild(i);
+    const {showToolbar, toggleToobar} = this.context;
+    if(showToolbar != this.props.showToolbar){
+      toggleToobar()
     }
   }
+
+  // setDocumentTitle = () => {
+  //   if(!this.props.title) return ;
+  //   document.title = this.props.title;
+  //
+  //   if (device.ios && device.webView) {
+  //     var i = document.createElement('iframe');
+  //     i.src = '/favicon.ico';
+  //     i.style.display = 'none';
+  //     i.onload = function() {
+  //         setTimeout(function(){
+  //             i.remove();
+  //         }, 9)
+  //     }
+  //     document.body.appendChild(i);
+  //   }
+  // }
 
   render() {
 
@@ -53,10 +61,12 @@ export default class Page extends Component {
       className,
       waiting,
       children,
+      showToolbar,
       ...other
     } = this.props;
 
     const themeCss = theme? `theme-${theme}`: '';
+
     let cls = classnames('page', {
       'navbar-fixed': navbarFixed,
       'toolbar-fixed': toolbarFixed

@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 
-import {Page, PageContent, Bars, ListView, Link} from 'kui'
+import {Page, PageContent, SubNavBar, Navbar, ListView, Link} from 'kui'
 
 const {List, ListItem, ListGroup, ListLabel} = ListView;
 
-const {SubNavBar, Navbar} = Bars;
 
 export default class TabPage extends Component {
   render() {

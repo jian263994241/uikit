@@ -1,12 +1,10 @@
 import React, {Component} from 'react'
 
-import {Page, PageContent, Buttons, ContentBlock, ContentBlockTitle, Bars, Grid, Popover, Popup, Modal, PickerModal, ActionsModal, View, Pages, Link} from 'kui'
+import {Page, PageContent, Buttons, ContentBlock, ContentBlockTitle, SubNavBar, Navbar, Toolbar, Grid, Popover, Popup, Modal, PickerModal, ActionsModal, View, Pages, Link} from 'kui'
 
 const {Button} = Buttons;
 const {Row,Col} = Grid;
-const {SubNavBar, Navbar} = Bars;
 
-const {Toolbar} = Bars;
 
 const {ActionLabel, ActionButton, ActionGroup} = ActionsModal;
 
@@ -20,6 +18,12 @@ export default class ModalsPage extends Component {
 
   popup = ()=>{
     this.setState({popupOpened:true});
+    this.props.history.push('/Modals/pop1')
+  }
+
+  closePopup = ()=>{
+    this.setState({popupOpened:false})
+    this.props.history.goBack('/Modals');
   }
 
   pickerModal = ()=>{
@@ -37,11 +41,11 @@ export default class ModalsPage extends Component {
     const pop1 = ()=>{
       return (
         <Page>
-          <Navbar title="弹窗1" backText="模态框" onBack={()=>{this.setState({popupOpened:false})}}/>
+          <Navbar title="弹窗1" backText="模态框" onBack={this.closePopup}/>
           <PageContent>
             <ContentBlock>
               POPUP1 ...
-              <Link to="/pop2">pop2</Link>
+              <Link to="/Modals/pop2">pop2</Link>
             </ContentBlock>
           </PageContent>
         </Page>
@@ -55,7 +59,7 @@ export default class ModalsPage extends Component {
           <PageContent>
             <ContentBlock>
               POPUP2 ...
-              <Link to="/pop3">pop3</Link>
+              <Link to="/Modals/pop3">pop3</Link>
             </ContentBlock>
           </PageContent>
         </Page>
@@ -141,11 +145,14 @@ export default class ModalsPage extends Component {
 
         {/*popup*/}
         <Popup visible={this.state.popupOpened}>
-
           <View>
-            <Pages path="/" exact component={pop1}></Pages>
-            <Pages path="/pop2" component={pop2}></Pages>
-            <Pages path="/pop3" component={pop3}></Pages>
+            <Pages
+              routes={[
+                {path:'/Modals/pop1', component: pop1},
+                {path:'/Modals/pop2', component: pop2},
+                {path:'/Modals/pop3', component: pop3}
+              ]}
+            />
           </View>
         </Popup>
 

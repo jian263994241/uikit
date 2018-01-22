@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 
-import {Page, PageContent, Bars, ListView, Buttons, Tabs, SwipeableViews} from 'kui'
+import {Page, PageContent, SubNavBar, Navbar, ListView, Buttons, Tabs, SwipeableViews} from 'kui'
 
 const {List, ListItem, ListGroup, ListLabel} = ListView;
 const {ButtonsSegmented, Button} = Buttons;
-const {SubNavBar, Navbar} = Bars;
+
 
 const styles = {
   slide: {

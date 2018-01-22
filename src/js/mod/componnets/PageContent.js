@@ -21,6 +21,12 @@ export default class PageContent extends Component {
     waiting: PropTypes.bool
   }
 
+  static contextTypes = {
+    hasToolbar: PropTypes.bool,
+    toolbarHeihgt: PropTypes.number,
+    showToolbar: PropTypes.bool,
+  }
+
   componentDidMount() {
     const {pullToRefresh, onRefresh} = this.props;
     this._mounted = true;
@@ -118,6 +124,7 @@ export default class PageContent extends Component {
       children,
       // onScroll,
       waiting,
+      style,
       ...rest
     } = this.props;
 
@@ -130,16 +137,22 @@ export default class PageContent extends Component {
       'infinite-scroll': infiniteScroll
     }, className);
 
+    const {hasToolbar, toolbarHeihgt, showToolbar} = this.context;
+
+    const toolbarStyle = (hasToolbar && showToolbar) ? {
+      paddingBottom: toolbarHeihgt
+    }: {};
+
     if(waiting){
       return (
-        <div className="page-content">
+        <div className="page-content" style={{...style, ...toolbarStyle}}>
           <span className="progressbar-infinite"></span>
         </div>
       );
     }
 
     return (
-      <div className={cls} {...rest} ref="wrapper">
+      <div className={cls} {...rest} ref="wrapper"  style={{...style, ...toolbarStyle}}>
         {
           pullToRefresh && (
             <div className="pull-to-refresh-layer">
@@ -148,8 +161,8 @@ export default class PageContent extends Component {
             </div>
           )
         }
-
-{children}
+        
+        {children}
         {
           showInfiniteScrollPreloader && (
             <div className="infinite-scroll-preloader">

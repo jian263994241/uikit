@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
 
-import {Page, PageContent, ContentBlock, ContentBlockTitle, Bars, Grid, Icon} from 'kui'
+import {Page, PageContent, ContentBlock, ContentBlockTitle, SubNavBar, Navbar, Grid, Icon} from 'kui'
 
 const {Row, Col} = Grid;
-
-const {SubNavBar, Navbar} = Bars;
 
 export default class GridPage extends Component {
 

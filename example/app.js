@@ -1,4 +1,3 @@
-import 'es6-shim';
 import React, {Component} from 'react'
 import {render} from 'react-dom'
 import {Views, View, Pages, dom as $, Toolbar, ToolbarNavLink, Link} from 'kui'

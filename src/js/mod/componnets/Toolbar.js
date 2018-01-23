@@ -17,13 +17,13 @@ export default class Toolbar extends Component {
   }
 
   static contextTypes = {
-    updateToolbarHeihgt: PropTypes.func
+    toolbarStatus: PropTypes.object,
+    updateToolbarStatus: PropTypes.func
   }
 
   componentDidMount(){
-    const {updateToolbarHeihgt} = this.context;
     const {height} = this.props;
-    updateToolbarHeihgt(height);
+    this.context.updateToolbarStatus({ height, hasToolbar: true });
   }
 
   render() {
@@ -35,9 +35,9 @@ export default class Toolbar extends Component {
       style,
       ...other
     } = this.props;
-
+    const toolbarStatus = this.context.toolbarStatus;
     const cls = classnames('toolbar', className);
-    const styles = { height, display: show ? 'block': 'none' };
+    const styles = { height, display: toolbarStatus.showToolbar ? 'block': 'none' };
 
     return (
       <div className={cls} style={styles} {...other} ref="bar">

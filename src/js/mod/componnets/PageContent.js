@@ -22,9 +22,7 @@ export default class PageContent extends Component {
   }
 
   static contextTypes = {
-    hasToolbar: PropTypes.bool,
-    toolbarHeihgt: PropTypes.number,
-    showToolbar: PropTypes.bool,
+    toolbarStatus: PropTypes.object,
   }
 
   componentDidMount() {
@@ -137,10 +135,10 @@ export default class PageContent extends Component {
       'infinite-scroll': infiniteScroll
     }, className);
 
-    const {hasToolbar, toolbarHeihgt, showToolbar} = this.context;
+    const {toolbarStatus} = this.context;
 
-    const toolbarStyle = (hasToolbar && showToolbar) ? {
-      paddingBottom: toolbarHeihgt
+    const toolbarStyle = (toolbarStatus.hasToolbar && toolbarStatus.showToolbar) ? {
+      paddingBottom: toolbarStatus.height
     }: {};
 
     if(waiting){
@@ -161,7 +159,7 @@ export default class PageContent extends Component {
             </div>
           )
         }
-        
+
         {children}
         {
           showInfiniteScrollPreloader && (

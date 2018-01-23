@@ -1,8 +1,6 @@
 import React, {Component, Children, cloneElement} from 'react';
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import {Navbar} from './Bars'
-import Toolbar from './Toolbar';
 
 export default class View extends Component {
 
@@ -10,71 +8,48 @@ export default class View extends Component {
 
   static propTypes = {
     type: PropTypes.string,
-    noAnimation: PropTypes.bool,
     navbar: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.object
-    ]),
-    toolbar: PropTypes.node
+    ])
   }
 
   static childContextTypes = {
-    hasToolbar: PropTypes.bool,
-    toolbarHeihgt: PropTypes.number,
-    updateToolbarHeihgt: PropTypes.func,
-    showToolbar: PropTypes.bool,
-    toggleToobar: PropTypes.func,
-  }
-
-  static defaultProps = {
-    toolbar: null
+    toolbarStatus: PropTypes.object,
+    updateToolbarStatus: PropTypes.func,
   }
 
   state = {
-    toolbarHeihgt: null,
-    showToolbar: false,
+    toolbarStatus: {
+      hasToolbar: false,
+      showToolbar: false,
+      heihgt: 0,
+    }
+  }
+
+  updateToolbarStatus = conf => {
+    this.state.toolbarStatus = {...this.state.toolbarStatus, ...conf}
+    this.forceUpdate();
   }
 
   getChildContext(){
     return {
-      hasToolbar: Boolean(this.props.toolbar),
-      showToolbar: this.state.showToolbar,
-      toggleToobar: ()=>this.setState({showToolbar: !this.state.showToolbar}),
-      toolbarHeihgt: this.state.toolbarHeihgt,
-      updateToolbarHeihgt: toolbarHeihgt => this.setState({ toolbarHeihgt }),
+      toolbarStatus: this.state.toolbarStatus,
+      updateToolbarStatus: this.updateToolbarStatus
     }
   }
 
-  renderToolbar = ()=>{
-    const {toolbar} = this.props;
-    if(toolbar) {
-      return (
-        <Toolbar {...toolbar.props} show={this.state.showToolbar}/>
-      )
-    }
-  }
 
   render() {
     const {
       type,
       className,
       children,
-      navbar,
-      noAnimation,
-      toolbar,
       ...rest
     } = this.props;
 
-    let throughBar;
-
-    if(navbar){
-      throughBar = <Navbar className="theme-gray" {...navbar}/>
-    }
-
     return (
       <div className={classnames('view', className)}>
-        {throughBar}
-        {this.renderToolbar()}
         {children}
       </div>
     );

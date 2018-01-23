@@ -23,33 +23,14 @@ export default class Page extends Component {
   }
 
   static contextTypes = {
-    showToolbar: PropTypes.bool,
-    toggleToobar: PropTypes.func
+    toolbarStatus: PropTypes.object,
+    updateToolbarStatus: PropTypes.func
   }
 
   componentDidMount() {
-    const {showToolbar, toggleToobar} = this.context;
-    if(showToolbar != this.props.showToolbar){
-      toggleToobar()
-    }
+    const {updateToolbarStatus, toolbarStatus} = this.context;
+    updateToolbarStatus({showToolbar: this.props.showToolbar});
   }
-
-  // setDocumentTitle = () => {
-  //   if(!this.props.title) return ;
-  //   document.title = this.props.title;
-  //
-  //   if (device.ios && device.webView) {
-  //     var i = document.createElement('iframe');
-  //     i.src = '/favicon.ico';
-  //     i.style.display = 'none';
-  //     i.onload = function() {
-  //         setTimeout(function(){
-  //             i.remove();
-  //         }, 9)
-  //     }
-  //     document.body.appendChild(i);
-  //   }
-  // }
 
   render() {
 

@@ -28,15 +28,7 @@ render((
     onRouteChange={((location, action)=>console.log(location))}
     onRouteInit={((location, action)=>console.log(location))}
   >
-    <View
-      toolbar={
-        <Toolbar className="aaa">
-          <ToolbarNavLink to="/" activeStyle={{color: '#eee'}}>Tab 1</ToolbarNavLink>
-          <ToolbarNavLink to="/ListView"  activeStyle={{color: '#eee'}}>ListView</ToolbarNavLink>
-          <ToolbarNavLink to="/MediaLists" activeStyle={{color: '#eee'}}>MediaLists</ToolbarNavLink>
-        </Toolbar>
-      }
-    >
+    <View>
       <Pages
         routes={[
           {path: '/', component: IndexPage},
@@ -59,6 +51,11 @@ render((
           {path: '/Preloader', component: Preloader},
           {path: '/Colors', component: Colors},
         ]}/>
+      <Toolbar className="aaa">
+        <ToolbarNavLink to="/" activeStyle={{color: '#eee'}}>Tab 1</ToolbarNavLink>
+        <ToolbarNavLink to="/ListView"  activeStyle={{color: '#eee'}}>ListView</ToolbarNavLink>
+        <ToolbarNavLink to="/MediaLists" activeStyle={{color: '#eee'}}>MediaLists</ToolbarNavLink>
+      </Toolbar>
     </View>
   </Views>
 ), document.querySelector('.root'));

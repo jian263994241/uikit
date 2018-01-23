@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import device from '../utils/device'
 import $ from 'dom7'
+import emptyFunction from 'emptyFunction'
 
 export default class Page extends Component {
 
@@ -30,9 +31,18 @@ export default class Page extends Component {
   componentDidMount() {
     const {updateToolbarStatus, toolbarStatus} = this.context;
     const {showToolbar} = this.props;
+    const {children, ...params} = this.props;
+    const onPageInit = window.onPageInit || emptyFunction;
+    onPageInit(params);
     if(toolbarStatus.showToolbar != showToolbar){
       updateToolbarStatus({showToolbar});
     }
+  }
+
+  componentWillUnmount(){
+    const {children, ...params} = this.props;
+    const onPageRemove = window.onPageRemove || emptyFunction;
+    onPageRemove(params);
   }
 
   render() {

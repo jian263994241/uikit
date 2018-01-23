@@ -22,6 +22,9 @@ import Preloader from './mod/Preloader'
 import SortableList from './mod/SortableList'
 import Colors from './mod/Colors'
 
+window.onPageInit = (props)=>{
+  console.log(props);
+}
 render((
   <Views
     onRouteChange={((location, action)=>console.log(location))}

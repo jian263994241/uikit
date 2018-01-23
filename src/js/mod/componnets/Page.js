@@ -29,7 +29,10 @@ export default class Page extends Component {
 
   componentDidMount() {
     const {updateToolbarStatus, toolbarStatus} = this.context;
-    updateToolbarStatus({showToolbar: this.props.showToolbar});
+    const {showToolbar} = this.props;
+    if(toolbarStatus.showToolbar != showToolbar){
+      updateToolbarStatus({showToolbar});
+    }
   }
 
   render() {

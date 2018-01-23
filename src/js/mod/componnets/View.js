@@ -39,7 +39,6 @@ export default class View extends Component {
     }
   }
 
-
   render() {
     const {
       type,

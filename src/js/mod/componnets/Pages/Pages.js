@@ -31,7 +31,7 @@ export default class Pages extends Component {
     let result = [];
 
     if(routes){
-      result = routes.map((conf, i)=>{
+      result = routes.map(({...conf,extraData}, i)=>{
         if(conf.path === '/'){
           conf.exact = true;
         }

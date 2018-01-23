@@ -31,7 +31,7 @@ render((
     <View>
       <Pages
         routes={[
-          {path: '/', component: IndexPage},
+          {path: '/', component: IndexPage, extraData: {title: '首页'}},
           {path: '/Swipeable', component: Swipeable},
           {path: '/ListView', component: ListView},
           {path: '/MediaLists', component: MediaLists},

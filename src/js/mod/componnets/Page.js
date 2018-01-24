@@ -25,14 +25,15 @@ export default class Page extends Component {
 
   static contextTypes = {
     toolbarStatus: PropTypes.object,
-    updateToolbarStatus: PropTypes.func
+    updateToolbarStatus: PropTypes.func,
+    onPageInit: PropTypes.func,
+    onPageRemove: PropTypes.func,
   }
 
   componentDidMount() {
-    const {updateToolbarStatus, toolbarStatus} = this.context;
+    const {updateToolbarStatus, toolbarStatus, onPageInit} = this.context;
     const {showToolbar} = this.props;
     const {children, ...params} = this.props;
-    const onPageInit = window.onPageInit || emptyFunction;
     onPageInit(params);
     if(toolbarStatus.showToolbar != showToolbar){
       updateToolbarStatus({showToolbar});
@@ -40,8 +41,8 @@ export default class Page extends Component {
   }
 
   componentWillUnmount(){
+    const {onPageRemove} = this.context;
     const {children, ...params} = this.props;
-    const onPageRemove = window.onPageRemove || emptyFunction;
     onPageRemove(params);
   }
 

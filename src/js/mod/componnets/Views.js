@@ -24,6 +24,8 @@ export default class Views extends Component {
      */
     onRouteChange: PropTypes.func,
     onRouteInit: PropTypes.func,
+    onPageInit: PropTypes.func,
+    onPageRemove: PropTypes.func
   }
 
   static defaultProps = {
@@ -34,7 +36,21 @@ export default class Views extends Component {
       getUserConfirmation: null
     }],
     onRouteChange: emptyfunction,
-    onRouteInit: emptyfunction
+    onRouteInit: emptyfunction,
+    onPageInit: emptyfunction,
+    onPageRemove: emptyfunction,
+  }
+
+  static childContextTypes = {
+    onPageInit: PropTypes.func,
+    onPageRemove: PropTypes.func
+  }
+
+  getChildContext(){
+    return {
+      onPageInit: this.props.onPageInit,
+      onPageRemove: this.props.onPageRemove
+    }
   }
 
   componentDidMount() {

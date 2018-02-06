@@ -11,7 +11,6 @@ export default class Views extends Component {
   static uiName = 'Views'
 
   static propTypes = {
-    type: PropTypes.string,
     fastclick: PropTypes.bool,
     fastclickConfig: PropTypes.object,
     router: PropTypes.oneOfType([
@@ -61,7 +60,7 @@ export default class Views extends Component {
 
     device.statusBar && $('.root').prepend('<div className="statusbar-overlay"></div>');
     this._unlisten = history.listen(onRouteChange);
-    onRouteInit(history.location, history.action);
+    onRouteInit(history.location, history.action, history);
   }
 
   componentWillUnMount(){

@@ -12,8 +12,7 @@ export default class Toolbar extends Component {
   }
 
   static defaultProps = {
-    height: 44,
-    show: true
+    height: 44
   }
 
   static contextTypes = {
@@ -31,7 +30,6 @@ export default class Toolbar extends Component {
       className,
       children,
       height,
-      show,
       style,
       ...other
     } = this.props;

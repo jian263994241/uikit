@@ -851,10 +851,6 @@ FastClick.notNeeded = function(layer) {
 	return false;
 };
 
-console.log(
-	Number(device.osVersion)
-);
-
 /**
  * Factory method for creating a FastClick object
  *
@@ -862,7 +858,7 @@ console.log(
  * @param {Object} [options={}] The options to override the defaults
  */
 FastClick.attach = function(layer, options) {
-	if(device.ios && Number(device.osVersion) >= 11) return {};
+	if(device.ios && Number(device.osVersion) > 11) return {};
 	return new FastClick(layer, options);
 };
 

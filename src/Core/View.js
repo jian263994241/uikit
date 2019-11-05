@@ -39,7 +39,7 @@ export default class View extends Component {
     const {onRouteChange, onRouteInit} = this.props;
     const history = this.history;
     this._unlisten = history.listen(onRouteChange);
-    // attachFastClick(document.body);
+    attachFastClick(document.body);
     onRouteInit(history.location, history.action);
   }
 

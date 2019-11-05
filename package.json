@@ -1,6 +1,6 @@
 {
   "name": "wonder-ui",
-  "version": "0.3.17",
+  "version": "0.3.18",
   "description": "Mobile UI base on react@16",
   "main": "index.js",
   "keywords": [
@@ -41,7 +41,7 @@
     "@babel/core": "^7.3.3",
     "ale-cli": "^0.1.2",
     "ale-webpack": "^1.1.11",
-    "babel-preset": "^1.0.1",
+    "babel-preset": "^1.1.1",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",

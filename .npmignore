@@ -15,3 +15,5 @@ node_modules
 
 espack.config.demo.js
 styleguide.config.js
+
+package-lock.json
